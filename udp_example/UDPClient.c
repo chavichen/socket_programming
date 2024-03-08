@@ -53,7 +53,7 @@ int is_ipv4(char *ip)
 int main(int argc , char *argv[])
 {
     int retry = 0;
-    int max_retries = 5;          //the maximum of retries
+    int max_retries = 3;          //the maximum of retries
     int baseDelay = 500;          //ms
     int multiplier = 2;
     int maxInterval = 8000;       //ms
@@ -124,7 +124,7 @@ int main(int argc , char *argv[])
      * Send message to the server with the retry mechanism based on backoff algorithm
      */
     srand(time(NULL));
-    for(retry = 0;retry < max_retries;retry++){
+    for(retry = 0;retry <= max_retries;retry++){
         //Send the message to the server
         ret = sendto(sockfd, (char *)message, strlen(message), 0, (const struct sockaddr *) &server_addr,
 sizeof(server_addr));
@@ -171,8 +171,8 @@ sizeof(server_addr));
     }
 
     //Reaching max-retry
-    if(retry > max_retries){
-        printf("Reach the maximum of retries.\n", max_retries);
+    if(retry == (max_retries+1)){
+        printf("Reach the maximum of %d retries.\n", max_retries);
         exit(1);
     }
 
