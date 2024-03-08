@@ -17,8 +17,12 @@
 * Open the Windows Powershell as administrator
   1. Run `docker pull debian:10-slim`
   2. Run `docker run -it -v  C:\Users\USER\Desktop\project:/source debian:10-slim` (C:\Users\USER\Desktop\project is the folder where the files and the programs are placing)
-  3. Run `cd source` and execute the programs
- 
+  4. Run `cd source` and execute the programs
+
+*Other tools:*
+*GCC*
+  1. Run `apt update`
+  2. Run `apt install build-essential`
 ## How the echo server program works
 1. Run server program and server listening on to the port `5555` is ready for receiving data.
 <img width="474" alt="server_ready" src="https://github.com/chavichen/socket_programming/assets/27536513/e3082954-9cd9-4298-95c5-500f917279b0">
